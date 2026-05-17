@@ -1,3 +1,6 @@
+import Input from "./ui/Input";
+import Button from "./ui/Button";
+
 const CTASection = () => {
   return (
     <section
@@ -26,15 +29,14 @@ const CTASection = () => {
             marginTop: "0.5rem",
           }}
         >
-          <input
+          <Input
             id="cta-email"
-            className="email-input"
             placeholder="Enter your work email"
             type="email"
           />
-          <button id="cta-submit" className="btn-primary-full">
+          <Button id="cta-submit" fullWidth>
             Get Started
-          </button>
+          </Button>
         </div>
       </div>
     </section>

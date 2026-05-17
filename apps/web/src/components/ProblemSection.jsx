@@ -1,3 +1,5 @@
+import Card from "./ui/Card";
+
 const problems = [
   {
     id: "repetitive-work",
@@ -25,15 +27,9 @@ const ProblemSection = () => {
       <p className="section-label">The Problem</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
         {problems.map((problem) => (
-          <div key={problem.id} id={problem.id} className="problem-card">
-            <h3
-              className="text-headline-md text-primary-col"
-              style={{ marginBottom: "0.5rem" }}
-            >
-              {problem.title}
-            </h3>
+          <Card key={problem.id} id={problem.id} title={problem.title}>
             <p className="text-body-md text-text-muted">{problem.description}</p>
-          </div>
+          </Card>
         ))}
       </div>
     </section>

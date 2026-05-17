@@ -1,3 +1,6 @@
+import Input from "./ui/Input";
+import Button from "./ui/Button";
+
 const HeroSection = () => {
   return (
     <section className="section">
@@ -20,16 +23,15 @@ const HeroSection = () => {
           className="hero-cta-row"
         >
           <div style={{ display: "flex", gap: "0", flexWrap: "wrap" }}>
-            <input
+            <Input
               id="hero-email"
-              className="email-input"
               style={{ minWidth: "0", flex: "1 1 200px" }}
               placeholder="Enter your work email"
               type="email"
             />
-            <button id="hero-cta" className="btn-primary">
+            <Button id="hero-cta">
               Get Started
-            </button>
+            </Button>
           </div>
           <div
             style={{
