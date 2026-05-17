@@ -1,8 +1,14 @@
+import TopAppBar from "./components/TopAppBar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <>
-      <div className="text-3xl font-bold underline">Work flow</div>
-    </>
+    <div style={{ backgroundColor: "#FFFFFF", color: "#111111", minHeight: "100dvh" }}>
+      <TopAppBar />
+      <Home />
+      <Footer />
+    </div>
   );
 }
 
