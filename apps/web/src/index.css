@@ -477,3 +477,67 @@
     color: #FFFFFF;
   }
 }
+
+/* ── Snackbar Toast System ── */
+.snackbar-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.snackbar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #222222;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 320px;
+  max-width: 480px;
+  animation: snackbar-slide-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.snackbar.success {
+  background-color: #ffffff;
+  color: #111111;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.snackbar.success .icon-wrapper {
+  color: #16a34a;
+}
+
+.snackbar.error {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #dc2626;
+}
+
+.snackbar.error .icon-wrapper {
+  color: #dc2626;
+}
+
+@keyframes snackbar-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+

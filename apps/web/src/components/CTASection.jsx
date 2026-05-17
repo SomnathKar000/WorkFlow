@@ -4,46 +4,39 @@ import Button from "./ui/Button";
 import Loader from "./ui/Loader";
 import { isValidEmail } from "../utils/validators";
 import { waitlistService } from "../services/waitlist.service";
+import { useSnackbar } from "../context/SnackbarContext";
 
 const CTASection = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("idle"); // idle | success | error
-  const [message, setMessage] = useState("");
+  const { showSnackbar } = useSnackbar();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (loading) return;
 
     if (!email.trim()) {
-      setStatus("error");
-      setMessage("Please enter an email address.");
+      showSnackbar("Please enter an email address.", "error");
       return;
     }
 
     if (!isValidEmail(email)) {
-      setStatus("error");
-      setMessage("Please enter a valid email address.");
+      showSnackbar("Please enter a valid email address.", "error");
       return;
     }
 
     setLoading(true);
-    setStatus("idle");
-    setMessage("");
 
     try {
       const response = await waitlistService.submitEmail(email);
       if (response.success) {
-        setStatus("success");
-        setMessage(response.message);
+        showSnackbar(response.message, "success");
         setEmail("");
       } else {
-        setStatus("error");
-        setMessage("Something went wrong. Please try again.");
+        showSnackbar("Something went wrong. Please try again.", "error");
       }
     } catch (err) {
-      setStatus("error");
-      setMessage(err.message || "Failed to submit. Please try again.");
+      showSnackbar(err.message || "Failed to submit. Please try again.", "error");
     } finally {
       setLoading(false);
     }
@@ -103,26 +96,6 @@ const CTASection = () => {
               )}
             </Button>
           </div>
-          {message && (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                color: status === "success" ? "#16a34a" : "#dc2626",
-                transition: "color 0.25s ease",
-              }}
-            >
-              <span
-                className="material-symbols-outlined"
-                style={{ fontSize: "16px" }}
-              >
-                {status === "success" ? "check_circle" : "error"}
-              </span>
-              <span className="text-label-sm">{message}</span>
-            </div>
-          )}
         </form>
       </div>
     </section>
