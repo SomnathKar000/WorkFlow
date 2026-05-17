@@ -10,7 +10,7 @@ const HeroSection = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("idle"); // idle | success | error
   const [message, setMessage] = useState(
-    "No credit card required. Free for small teams.",
+    "Your commits already tell the story. Let Workflow write the update.",
   );
 
   const handleSubmit = async (e) => {
