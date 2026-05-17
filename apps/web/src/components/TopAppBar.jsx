@@ -5,11 +5,7 @@ const TopAppBar = () => {
         <a href="/" className="brand-logo">
           WorkFlow
         </a>
-        <nav className="flex items-center" style={{ gap: "0.75rem" }}>
-          <a href="#" className="nav-link">
-            GitHub
-          </a>
-        </nav>
+        <nav className="flex items-center" style={{ gap: "0.75rem" }}></nav>
       </div>
     </header>
   );
