@@ -4,10 +4,10 @@ const Footer = () => {
       <div className="footer-inner">
         <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           <div className="brand-logo" style={{ fontSize: "20px" }}>
-            Standup
+            WorkFlow
           </div>
           <p className="text-label-sm text-text-muted">
-            © 2024 Standup. Functional minimalism for deep work.
+            © 2024 WorkFlow. Functional minimalism for deep work.
           </p>
         </div>
         <div style={{ display: "flex", gap: "0.75rem" }}>

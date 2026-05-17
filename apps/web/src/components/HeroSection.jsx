@@ -6,7 +6,7 @@ const HeroSection = () => {
           Never write a standup again.
         </h1>
         <p className="text-body-lg text-text-muted">
-          Standup connects to your GitHub, Jira, and Slack to automatically
+          WorkFlow connects to your GitHub, Jira, and Slack to automatically
           draft your daily updates. Spend your mornings on deep work, not status
           reporting.
         </p>
