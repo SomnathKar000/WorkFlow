@@ -5,7 +5,7 @@ import { supabase } from "./supabase";
  */
 export const waitlistService = {
   /**
-   * Submits an email to the waitlist Supabase table.
+   * Submits an email to the early_access Supabase table.
    * @param {string} email
    * @returns {Promise<{success: boolean, message: string}>}
    */
@@ -28,21 +28,24 @@ export const waitlistService = {
     } catch (err) {
       console.error("Supabase insert error:", err);
 
-      // Handle Postgres unique constraint violation
+      let friendlyMessage = "Failed to join the waitlist. Please try again.";
+
+      // Handle unique constraint violation (duplicate email)
       if (err.code === "23505") {
-        console.log("Email already registered!");
+        friendlyMessage = "This email is already registered on our waitlist!";
+      }
+      // Handle table not found
+      else if (err.code === "42P01") {
+        friendlyMessage = "Table 'early_access' does not exist in the database.";
+      }
+      else if (err.message) {
+        friendlyMessage = err.message;
       }
 
-      // Handle table not found error
-      if (err.code === "42P01") {
-        console.log(
-          "Waitlist table does not exist. Please create a 'waitlist' table in Supabase with an 'email' column.",
-        );
-      }
-
-      console.log(
-        err.message || "Failed to join the waitlist. Please try again.",
-      );
+      return {
+        success: false,
+        message: friendlyMessage,
+      };
     }
   },
 };

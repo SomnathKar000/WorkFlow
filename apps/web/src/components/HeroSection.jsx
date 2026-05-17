@@ -33,7 +33,7 @@ const HeroSection = () => {
         showSnackbar(response.message, "success");
         setEmail("");
       } else {
-        showSnackbar("Something went wrong. Please try again.", "error");
+        showSnackbar(response.message || "Something went wrong. Please try again.", "error");
       }
     } catch (err) {
       showSnackbar(err.message || "Failed to submit. Please try again.", "error");
