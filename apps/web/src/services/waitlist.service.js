@@ -14,7 +14,7 @@ export const waitlistService = {
       const trimmedEmail = email.trim().toLowerCase();
 
       const { error } = await supabase
-        .from("waitlist")
+        .from("early_access")
         .insert([{ email: trimmedEmail }]);
 
       if (error) {
