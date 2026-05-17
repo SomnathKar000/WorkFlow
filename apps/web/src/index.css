@@ -232,7 +232,7 @@
 
   /* Email input */
   .email-input {
-    flex: 1;
+    flex: none;
     height: 3rem;
     padding: 0 1rem;
     background-color: #FFFFFF;
@@ -246,6 +246,7 @@
     border-radius: 0;
     -webkit-appearance: none;
     appearance: none;
+    text-align: left;
   }
 
   .email-input:focus {
